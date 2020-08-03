@@ -8,8 +8,11 @@ const notes = require('./routes/Notes')
 dotenv.config({path:'./config/config.env'})
 connectDB()
 const app = express()
-
-
+app.use(express.json())
+//set up morgan 
+if(process.env.NODE_ENV === 'development'){
+    app.use(morgan('dev'))
+}
 
 app.use('/api/v1/notes/',notes)
 
