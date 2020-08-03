@@ -51,10 +51,24 @@ exports.postNote = async (req,res,next) => {
 // @route DELETE /api/v1/transactions/:id
 // @access PUBLIC
 exports.delNote = async (req,res,next) => {
-    // try{
-
-    // } catch (e){
-
-    // }
-    res.send("DELETE TRANSACTIONS")
+    try{
+        const note = await Notes.findById(req.params.id)
+        if (!note){
+            return res.status(404).json({
+                success:false,
+                error:'Not found'
+            })
+        }
+        await note.remove()
+        return res.status(200).json({
+            success:true,
+            data:[]
+        })
+    } catch (err){
+        return res.status(500).json({
+            success:false,
+            error:err.message
+        })
+    }
+    // res.send("DELETE TRANSACTIONS")
 }
