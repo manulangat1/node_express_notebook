@@ -3,10 +3,12 @@ const morgan = require('morgan')
 const colors = require('colors')
 const dotenv = require('dotenv')
 
+const notes = require('./routes/Notes')
+
 const app = express()
 dotenv.config({path:'./config/config.env'})
 
-app.get('/',(req,res) => res.send("hello"))
+app.use('/api/notes/',notes)
 
 const PORT = process.env.PORT || 5000 
 
