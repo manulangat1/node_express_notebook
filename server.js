@@ -8,7 +8,7 @@ const notes = require('./routes/Notes')
 dotenv.config({path:'./config/config.env'})
 connectDB()
 const app = express()
-
+app.use(express.json())
 
 
 app.use('/api/v1/notes/',notes)
