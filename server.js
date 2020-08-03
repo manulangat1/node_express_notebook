@@ -8,7 +8,7 @@ const notes = require('./routes/Notes')
 const app = express()
 dotenv.config({path:'./config/config.env'})
 
-app.use('/api/notes/',notes)
+app.use('/api/v1/notes/',notes)
 
 const PORT = process.env.PORT || 5000 
 
