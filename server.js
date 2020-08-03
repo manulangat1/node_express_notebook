@@ -2,11 +2,14 @@ const express = require('express')
 const morgan = require('morgan')
 const colors = require('colors')
 const dotenv = require('dotenv')
-
+const connectDB = require('./config/db')
 const notes = require('./routes/Notes')
 
-const app = express()
 dotenv.config({path:'./config/config.env'})
+connectDB()
+const app = express()
+
+
 
 app.use('/api/v1/notes/',notes)
 
